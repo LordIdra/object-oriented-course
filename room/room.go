@@ -1,6 +1,6 @@
 package room
 
-import "ObjectOrientedCourse/src/character.go"
+import "character"
 
 
 type Room struct {
