@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"room"
+	"ObjectOrientedCourse/src/room"
 )
 
 

@@ -1,6 +1,6 @@
 package room
 
-import "character"
+import "ObjectOrientedCourse/src/character"
 
 
 type Room struct {

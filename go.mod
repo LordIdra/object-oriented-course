@@ -1,3 +1,3 @@
-module github.com/LordIdra/ObjectOrientedCourse
+module ObjectOrientedCourse
 
 go 1.17
