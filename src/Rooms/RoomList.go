@@ -29,3 +29,7 @@ func Initialize() {
 	linkRooms()
 	createCharacters()
 }
+
+func DefaultRoom() *Room {
+	return rooms[0]
+}

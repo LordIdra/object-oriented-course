@@ -38,6 +38,11 @@ func (room *Room) Describe() {
 	}
 }
 
-func (room *Room) Move(direction string) {
-	// TODO
+func (room *Room) Move(direction string) *Room {
+	if room.links[direction] == nil {
+		fmt.Print("Invalid direction!")
+		return room
+	} else {
+		return room.links[direction]
+	}
 }
