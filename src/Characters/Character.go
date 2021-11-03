@@ -17,14 +17,14 @@ func NewCharacter(name string, description string, conversation string) *Charact
 }
 
 func (character *Character) Describe() {
-	fmt.Print("")
-	fmt.Print("[", character.name, "] ", character.description)
+	fmt.Println("")
+	fmt.Println("[", character.name, "] ", character.description)
 }
 
 func (character *Character) Talk() {
 	if character.conversation == "" {
-		fmt.Print("[", character.name, "] ", "Doesn't want to talk to you.")
+		fmt.Println("[", character.name, "] ", "Doesn't want to talk to you.")
 	} else {
-		fmt.Print("[", character.name, "] ", character.conversation)
+		fmt.Println("[", character.name, "] ", character.conversation)
 	}
 }

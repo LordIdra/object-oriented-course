@@ -27,11 +27,15 @@ func (room *Room) setCharacter(character *Characters.Character) {
 	room.character = character
 }
 
+func (room *Room) GetCharacter() *Characters.Character {
+	return room.character
+}
+
 func (room *Room) Describe() {
-	fmt.Print("--- ", room.name, " ---")
-	fmt.Print(room.description)
+	fmt.Println("--- ", room.name, " ---")
+	fmt.Println(room.description)
 	for direction, room := range room.links {
-		fmt.Print(room, " is ", direction)
+		fmt.Println(room, " is ", direction)
 	}
 	if room.character != nil {
 		room.character.Describe()
@@ -40,7 +44,7 @@ func (room *Room) Describe() {
 
 func (room *Room) Move(direction string) *Room {
 	if room.links[direction] == nil {
-		fmt.Print("Invalid direction!")
+		fmt.Println("Invalid direction!")
 		return room
 	} else {
 		return room.links[direction]
