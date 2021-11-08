@@ -10,8 +10,7 @@ var gameRunning bool
 var room *Rooms.Room
 
 func RunCommandLoop() {
-	roomChanged := false
-	for !roomChanged {
+	for {
 		fmt.Println("Enter command (talk, fight, move):")
 		var command string
 		fmt.Scanln(&command)
@@ -23,7 +22,7 @@ func RunCommandLoop() {
 			}
 		} else if command == "move" {
 			room = Commands.CommandMove(room)
-			roomChanged = true
+			break
 		} else {
 			fmt.Println("Invalid command!")
 		}
@@ -33,6 +32,7 @@ func RunCommandLoop() {
 func main() {
 	Rooms.Initialize()
 	room = Rooms.DefaultRoom()
+	gameRunning = true
 	for gameRunning {
 		room.Describe()
 		RunCommandLoop()

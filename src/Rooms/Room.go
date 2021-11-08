@@ -16,6 +16,7 @@ func NewRoom(name string, description string) *Room {
 	room := new(Room)
 	room.name = name
 	room.description = description
+	room.links = map[string]*Room{}
 	return room
 }
 
@@ -35,7 +36,7 @@ func (room *Room) Describe() {
 	fmt.Println("--- ", room.name, " ---")
 	fmt.Println(room.description)
 	for direction, room := range room.links {
-		fmt.Println(room, " is ", direction)
+		fmt.Println(room.name, "is", direction)
 	}
 	if room.character != nil {
 		room.character.Describe()
