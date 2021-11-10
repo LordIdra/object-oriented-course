@@ -1,40 +1,30 @@
 package main
 
 import (
-	"fmt"
+	"ObjectOrientedCourse/src/Player"
 	"ObjectOrientedCourse/src/Rooms"
-	"ObjectOrientedCourse/src/Commands"
+	"fmt"
 )
 
-var gameRunning bool
-var room *Rooms.Room
-
 func RunCommandLoop() {
-	for {
-		fmt.Println("Enter command (talk, fight, move):")
+	hasMoved := false
+	for !hasMoved {
+		availableCommandString := Player.GetAvailableCommandString()
+		fmt.Println("Enter command (" + availableCommandString + "):")
 		var command string
 		fmt.Scanln(&command)
-		if command == "talk" {
-			Commands.CommandTalk(room)
-		} else if command == "fight" {
-			if !Commands.CommandFight(room) {
-				gameRunning = false
-			}
-		} else if command == "move" {
-			room = Commands.CommandMove(room)
-			break
-		} else {
-			fmt.Println("Invalid command!")
-		}
+		Player.RunCommand(command, &hasMoved)
 	}
 }
 
 func main() {
 	Rooms.Initialize()
-	room = Rooms.DefaultRoom()
-	gameRunning = true
-	for gameRunning {
-		room.Describe()
+	Player.Initialize()
+	for {
+		Player.DescribeRoom()
 		RunCommandLoop()
+		if !Player.Alive() {
+			break
+		}
 	}
 }

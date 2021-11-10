@@ -9,7 +9,7 @@ type Room struct {
 	name        string
 	description string
 	links       map[string]*Room
-	character   *Characters.Character
+	character   Characters.Character
 }
 
 func NewRoom(name string, description string) *Room {
@@ -24,16 +24,16 @@ func (room *Room) addLink(direction string, link *Room) {
 	room.links[direction] = link
 }
 
-func (room *Room) setCharacter(character *Characters.Character) {
+func (room *Room) setCharacter(character Characters.Character) {
 	room.character = character
 }
 
-func (room *Room) GetCharacter() *Characters.Character {
+func (room *Room) GetCharacter() Characters.Character {
 	return room.character
 }
 
 func (room *Room) Describe() {
-	fmt.Println("--- ", room.name, " ---")
+	fmt.Println("----- " + room.name + " -----")
 	fmt.Println(room.description)
 	for direction, room := range room.links {
 		fmt.Println(room.name, "is", direction)
@@ -51,3 +51,13 @@ func (room *Room) Move(direction string) *Room {
 		return room.links[direction]
 	}
 }
+
+func (room *Room) GetAvailableCommands() []string {
+	availableCommands := []string{"move"}
+	if room.character != nil {
+		availableCommands = append(availableCommands, "talk")
+		availableCommands = append(availableCommands, "fight")
+	}
+	return availableCommands
+}
+
