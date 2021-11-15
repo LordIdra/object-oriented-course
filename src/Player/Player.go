@@ -18,13 +18,21 @@ func Initialize() {
 	health = 72
 	maxHealth = 100
 	alive = true
+	items = []Items.Item{}
+	items = append(items, Items.Item{
+		Name: "Flint",
+		MinDamage: 5,
+		MaxDamage: 8})
 }
 
 func RunCommand(command string, hasMoved *bool) {
 	if command == "talk" {
-		Commands.CommandTalk(room)
+		item := Commands.CommandTalk(room)
+		if item != (Items.Item{}) {
+			items = append(items, item)
+		}
 	} else if command == "fight" {
-		if !Commands.CommandFight(room, &health, maxHealth) {
+		if !Commands.CommandFight(room, &health, maxHealth, items) {
 			alive = false
 		}
 	} else if command == "move" {

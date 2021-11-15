@@ -24,16 +24,17 @@ func linkRooms() {
 }
 
 func createCharacters() {
-	rooms[0].setCharacter(Characters.NewNeutral(
+	rooms[0].setCharacter(Characters.NewEnemy(
 		"Dave",
 		"BRAAAAAAIIIIINNNNSSSS",
-		"Hello little one"))
+		"Hello little one",
+		50, 2, 4))
 	rooms[1].setCharacter(Characters.NewFriendly(
 		"Bob",
 		"A builder.",
 		"It's dangerous to go alone! Take this wrench.",
 		Items.Item{
-			Name: "wrench", 
+			Name: "Wrench", 
 			MinDamage: 10, 
 			MaxDamage: 15}))
 }

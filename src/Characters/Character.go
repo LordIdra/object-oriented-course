@@ -1,7 +1,10 @@
 package Characters
 
+import "ObjectOrientedCourse/src/Items"
+
 type Character interface {
 	Describe()
 	Talk()
-	Fight(health *int, maxHealth int) bool
+	GetItem() Items.Item
+	Fight(health *int, maxHealth int, items []Items.Item) bool
 }

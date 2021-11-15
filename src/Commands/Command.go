@@ -8,11 +8,12 @@ import (
 
 func CommandTalk(room *Rooms.Room) Items.Item {
 	room.GetCharacter().Talk()
-	
+	return room.GetCharacter().GetItem()
 }
 
-func CommandFight(room *Rooms.Room, health *int, maxHealth int) bool {
-	return room.GetCharacter().Fight(health, maxHealth)
+func CommandFight(room *Rooms.Room, health *int, maxHealth int, items []Items.Item) bool {
+	fmt.Println("----- FIGHT -----")
+	return room.GetCharacter().Fight(health, maxHealth, items)
 }
 
 func CommandMove(room *Rooms.Room) *Rooms.Room {

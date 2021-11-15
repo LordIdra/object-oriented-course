@@ -1,6 +1,9 @@
 package Characters
 
-import "fmt"
+import (
+	"ObjectOrientedCourse/src/Items"
+	"fmt"
+)
 
 type Neutral struct {
 	name         string
@@ -29,7 +32,11 @@ func (neutral *Neutral) Talk() {
 	}
 }
 
-func (neutral *Neutral) Fight(health *int, maxHealth int) bool {
+func (neutral *Neutral) Fight(health *int, maxHealth int, items []Items.Item) bool {
 	fmt.Println(neutral.name + " doesn't want to fight with you.")
 	return true
+}
+
+func (neutral *Neutral) GetItem() Items.Item {
+	return Items.Item{}
 }
